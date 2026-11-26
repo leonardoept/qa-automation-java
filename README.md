@@ -1,5 +1,7 @@
 # 🧪 QA Automation (Java) – Selenium + TestNG + RestAssured
 
+[![Tests](https://github.com/leonardoept/qa-automation-java/actions/workflows/tests.yml/badge.svg)](https://github.com/leonardoept/qa-automation-java/actions/workflows/tests.yml)
+
 Framework de pruebas automatizadas en Java sobre [SauceDemo](https://www.saucedemo.com/) (UI) y [Restful Booker](https://restful-booker.herokuapp.com/) (API).
 Es la versión en Java de mi [portfolio en Python con Playwright](https://github.com/leonardoept/qa-automation-portfolio).
 

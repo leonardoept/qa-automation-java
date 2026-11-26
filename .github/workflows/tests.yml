@@ -1,0 +1,33 @@
+# Workflow de CI: corre todos los tests en cada push y en cada pull request.
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:        # permite correrlo a mano desde la pestaña Actions
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # máquina Linux de GitHub (ya trae Chrome instalado)
+
+    steps:
+      - name: Descargar el código del repo
+        uses: actions/checkout@v4
+
+      - name: Instalar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven      # guarda las dependencias para que la próxima vez sea más rápido
+
+      - name: Correr los tests
+        run: mvn -B test
+
+      - name: Guardar el reporte de TestNG
+        if: always()        # se guarda aunque fallen los tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-tests
+          path: target/surefire-reports/
